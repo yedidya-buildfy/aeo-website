@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AEO</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9fafb;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        /* Privacy Policy Content */
+        .privacy {
+            padding: 5rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .privacy h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .privacy-intro {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .privacy h2 {
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .privacy p, .privacy ul {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .privacy ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .privacy li {
+            margin-bottom: 0.5rem;
+        }
+
+        .privacy a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .privacy a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .privacy h1 {
+                font-size: 2rem;
+            }
+
+            .privacy h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="otter-AEO.png" alt="AEO Logo">
+                    <span>AEO</span>
+                </a>
+                <a href="index.html" class="back-link">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Content -->
+    <div class="privacy">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <p class="privacy-intro">Last Updated: October 19, 2025</p>
+
+            <h2>Introduction</h2>
+            <p>AEO Blog Generator ("the App", "we", "us", or "our") provides automated blog generation and SEO optimization for Shopify stores. This Privacy Policy explains how we handle store and user data when you install or use our App.</p>
+
+            <h2>Information We Collect</h2>
+            <p>When you install the App, we collect data directly from Shopify's APIs, including:</p>
+            <ul>
+                <li>Store domain, owner name, and email</li>
+                <li>Access tokens required for API communication</li>
+                <li>Store content (product info, pages, and blog data) only as needed to generate and publish content</li>
+                <li>Usage analytics such as generation count and last activity date</li>
+                <li>Subscription details (plan, billing status, Shopify charge ID)</li>
+            </ul>
+            <p>We do not collect customer or order data from your store unless explicitly required for a feature.</p>
+
+            <h2>How We Use Your Information</h2>
+            <p>We use collected information solely to:</p>
+            <ul>
+                <li>Generate and publish SEO-optimized blog content</li>
+                <li>Analyze keywords and site structure to improve relevance</li>
+                <li>Manage app functionality, billing, and authentication</li>
+                <li>Provide customer support and technical updates</li>
+            </ul>
+            <p>We do not sell or share your data for advertising or marketing purposes.</p>
+
+            <h2>Data Storage & Security</h2>
+            <ul>
+                <li>All communication between your store and our servers is encrypted (HTTPS/TLS)</li>
+                <li>Data is securely stored in a PostgreSQL database with restricted access</li>
+                <li>When you uninstall the App, your data is deleted within 30 days</li>
+                <li>Backups (if created) are automatically removed after 90 days</li>
+            </ul>
+
+            <h2>Third-Party Services</h2>
+            <p>We rely on:</p>
+            <ul>
+                <li>Shopify API – to access store data and publish content</li>
+                <li>Google Gemini AI – to generate blog text and analyze keywords</li>
+                <li>Hosting Provider (Render) – to store authentication and app data securely</li>
+            </ul>
+            <p>Each service complies with its own privacy policy: <a href="https://www.shopify.com/legal/privacy" target="_blank">Shopify Privacy Policy</a> and <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+
+            <h2>Your Rights</h2>
+            <p>You can:</p>
+            <ul>
+                <li>Access or delete your data anytime by uninstalling the App</li>
+                <li>Request data deletion or export via email: yedidyadan33@gmail.com</li>
+                <li>Disable automation features from the App settings</li>
+            </ul>
+
+            <h2>Contact</h2>
+            <p><strong>App Developer:</strong> Yedidya<br>
+            <strong>Email:</strong> <a href="mailto:yedidyadan33@gmail.com">yedidyadan33@gmail.com</a><br>
+            <strong>Support:</strong> Through the Shopify App Store or in-app help center</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AEO Blog Generator. All rights reserved.</p>
+            <p>Made with ❤️ for Shopify merchants</p>
+            <p><a href="mailto:yedidyadan33@gmail.com">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>

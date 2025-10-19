@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEO - AI Engine Optimization for Shopify</title>
+    <link rel="icon" type="image/png" href="loader-1.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        nav a {
+            color: #6b7280;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #111827;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #111827;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 12px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #111827;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: #f9fafb;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #111827;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .arrow {
+            font-size: 2.5rem;
+            color: #667eea;
+            flex-shrink: 0;
+            align-self: center;
+            font-weight: bold;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .blog-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #111827;
+        }
+
+        .blog-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .blog-intro p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .blog-articles {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .blog-article {
+            background: #f9fafb;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .blog-article h3 {
+            font-size: 1.75rem;
+            color: #111827;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .blog-article p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .blog-article ul {
+            margin: 1rem 0 1rem 1.5rem;
+            color: #4b5563;
+        }
+
+        .blog-article li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .blog-article strong {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .blog-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .blog-cta h3 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .blog-cta p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features h2,
+            .how-it-works h2,
+            .blog-section h2 {
+                font-size: 2rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+
+            .step {
+                flex: 1 1 auto;
+            }
+
+            .blog-article {
+                padding: 1.5rem;
+            }
+
+            .blog-article h3 {
+                font-size: 1.5rem;
+            }
+
+            .blog-cta {
+                padding: 2rem 1.5rem;
+            }
+
+            .blog-cta h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="loader-1.png" alt="AEO Logo">
+                    <span>AEO</span>
+                </div>
+                <nav>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>AI Engine Optimization for Shopify</h1>
+            <p>Optimize your store for AI search engines and boost your visibility with automated SEO-optimized blog generation</p>
+            <a href="https://apps.shopify.com/aeo-blog" class="cta-button">Install on Shopify</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Everything You Need for AEO Success</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Content</h3>
+                    <p>Generate SEO-optimized blog posts automatically using advanced AI that understands your store and products.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Smart Keyword Analysis</h3>
+                    <p>Discover the best keywords for your business with intelligent analysis of your website content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>One-Click Setup</h3>
+                    <p>Install and configure your AEO optimization in minutes with our simple wizard-guided setup.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Automated Publishing</h3>
+                    <p>Set it and forget it. Blogs are automatically generated and published on your schedule.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Performance Tracking</h3>
+                    <p>Monitor AI sessions, time saved, and blog performance all from your dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is encrypted and stored securely. We never share your information with third parties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Install & Connect</h3>
+                    <p>Install the app from Shopify App Store and connect it to your store</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Optimize AEO</h3>
+                    <p>One-click optimization generates robots.txt and llms.txt for AI engines</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Choose Your Plan</h3>
+                    <p>Select a plan that fits your needs, from free to pro tier</p>
+                </div>
+                <div class="arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Generate Blogs</h3>
+                    <p>AI discovers keywords and creates SEO-optimized blogs automatically</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <h2>Understanding AEO & SEO: The Future of Search Optimization</h2>
+
+            <div class="blog-content">
+                <div class="blog-intro">
+                    <p>In today's digital landscape, optimizing for both traditional search engines (SEO) and AI-powered search engines (AEO) is essential for online visibility. Our app combines the power of automated blog generation with critical optimization files to maximize your store's discoverability.</p>
+                </div>
+
+                <div class="blog-articles">
+                    <div class="blog-article">
+                        <h3>What is AEO (AI Engine Optimization)?</h3>
+                        <p>AI Engine Optimization (AEO) is the practice of optimizing your website content for AI-powered search engines and assistants like ChatGPT, Claude, Gemini, and Perplexity. Unlike traditional search engines that return a list of links, AI engines directly answer user queries by analyzing and synthesizing information from across the web.</p>
+                        <p>To rank well in AI-generated responses, your content needs to be:</p>
+                        <ul>
+                            <li><strong>Structured and clear:</strong> AI models favor well-organized, authoritative content</li>
+                            <li><strong>Contextually rich:</strong> Comprehensive information that answers complete questions</li>
+                            <li><strong>Properly indexed:</strong> Using robots.txt and llms.txt to guide AI crawlers</li>
+                        </ul>
+                    </div>
+
+                    <div class="blog-article">
+                        <h3>The Power of SEO-Optimized Blogs</h3>
+                        <p>Blogs remain one of the most effective tools for both SEO and AEO. Here's why:</p>
+                        <ul>
+                            <li><strong>Keyword targeting:</strong> Blogs allow you to naturally incorporate keywords your customers are searching for</li>
+                            <li><strong>Long-form content:</strong> Detailed blog posts provide the comprehensive information AI engines seek</li>
+                            <li><strong>Regular updates:</strong> Fresh content signals to search engines that your site is active and relevant</li>
+                            <li><strong>Problem-solving:</strong> Blogs that answer customer questions build authority and trust</li>
+                        </ul>
+                        <p>Our AI-powered blog generation analyzes your store, identifies the most impactful keywords, and creates targeted content automatically—saving you 40+ hours per blog while maintaining quality and relevance.</p>
+                    </div>
+
+                    <div class="blog-article">
+                        <h3>robots.txt: Guiding AI Crawlers</h3>
+                        <p>The robots.txt file is a critical tool for controlling how search engines and AI bots access your website. While traditionally used for SEO, it's become equally important for AEO:</p>
+                        <ul>
+                            <li><strong>Access control:</strong> Define which parts of your site AI crawlers can access</li>
+                            <li><strong>Crawl efficiency:</strong> Direct bots to your most important content first</li>
+                            <li><strong>Privacy protection:</strong> Prevent AI engines from indexing sensitive pages</li>
+                            <li><strong>Bandwidth optimization:</strong> Reduce server load by controlling crawler behavior</li>
+                        </ul>
+                        <p>Our app automatically generates an optimized robots.txt file tailored to your store's structure, ensuring AI engines can efficiently discover and index your best content.</p>
+                    </div>
+
+                    <div class="blog-article">
+                        <h3>llms.txt: The New Standard for AI Optimization</h3>
+                        <p>The llms.txt file is a emerging standard specifically designed for Large Language Models (LLMs) and AI search engines. Think of it as a "README" for AI:</p>
+                        <ul>
+                            <li><strong>Content summary:</strong> Provides AI engines with a clear overview of your site's purpose and offerings</li>
+                            <li><strong>Key information:</strong> Highlights your main products, services, and unique value propositions</li>
+                            <li><strong>Structured data:</strong> Presents information in a format optimized for AI understanding</li>
+                            <li><strong>Context building:</strong> Helps AI models generate more accurate responses about your business</li>
+                        </ul>
+                        <p>By implementing llms.txt, you're giving AI engines the context they need to accurately represent your store when answering user queries—potentially reaching millions of users through AI-powered search.</p>
+                    </div>
+
+                    <div class="blog-article">
+                        <h3>The Synergy: Blogs + Optimization Files</h3>
+                        <p>The real magic happens when you combine regular blog content with properly configured robots.txt and llms.txt files:</p>
+                        <ul>
+                            <li><strong>Maximum visibility:</strong> Your blogs are easily discovered by both traditional and AI-powered search engines</li>
+                            <li><strong>Authority building:</strong> Comprehensive content demonstrates expertise to AI models</li>
+                            <li><strong>Targeted reach:</strong> Keyword-optimized blogs attract specific customer segments</li>
+                            <li><strong>Compounding returns:</strong> Each blog adds to your overall domain authority and AI visibility</li>
+                        </ul>
+                        <p>Our app automates this entire workflow—generating targeted blogs, optimizing your robots.txt and llms.txt files, and continuously updating your content to maintain peak visibility across all search platforms.</p>
+                    </div>
+
+                    <div class="blog-cta">
+                        <h3>Ready to Dominate Both SEO and AEO?</h3>
+                        <p>Start optimizing your Shopify store for the future of search today. Install our app and let AI work for your business.</p>
+                        <a href="https://apps.shopify.com/aeo-blog" class="cta-button">Get Started Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AEO Blog Generator. All rights reserved.</p>
+            <p>Made with ❤️ for Shopify merchants</p>
+            <p><a href="mailto:yedidyadan33@gmail.com">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+</body>
+</html>
